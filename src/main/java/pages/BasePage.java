@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -57,5 +58,13 @@ public class BasePage {
         Random rnd = new Random();
         int randomNumber = rnd.nextInt(elements.size() - 1);
         return elements.get(randomNumber);
+    }
+
+    public boolean isPresent(WebElement element){
+        try {
+            return element.isDisplayed();
+        } catch (NoSuchElementException e){
+            return false;
+        }
     }
 }
